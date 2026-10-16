@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="img/logo_sin_fondo_jma.png" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMA MATERIALES</title>
+    
+    <!-- Google Fonts: Montserrat para un look premium y geométrico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para los Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jma: {
+                            mustard: '#eab308', /* Amarillo Mostaza / Dorado */
+                            dark: '#1a1a1a',    /* Carbón oscuro */
+                            light: '#ffffff'    /* Blanco */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    letterSpacing: {
+                        'mega': '0.25em',
+                        'ultra': '0.15em'
+                    },
+                    /* Animación para el carrusel infinito */
+                    animation: {
+                        'marquee': 'marquee 20s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-jma-light text-jma-dark antialiased relative">
+
+    <!-- Navegación -->
+    <nav class="bg-white w-full z-50 border-b border-black-100 relative sticky top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 md:h-20"> <!-- Altura aumentada para el logo -->
+                
+                <!-- Logo (Más grande) -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-bold text-xl md:text-2xl tracking-mega text-jma-dark uppercase flex items-center">
+                        <!-- Reemplaza con la ruta de tu logo -->
+                        <img src="img/logo_sin_fondo_jma.png" alt="JMA MATERIALES" class="h-16 md:h-28 object-contain">
+                    </a>
+                </div>
+
+                <!-- Menú de Escritorio -->
+                <div class="hidden md:flex space-x-8 lg:space-x-12 items-center">
+                    <a href="#inicio" class="text-xs font-bold tracking-ultra hover:text-jma-mustard transition-colors flex items-center gap-1">
+                        INICIO <span class="text-black-400 font-normal">+</span>
+                    </a>
+                    <a href="#productos" class="text-xs font-bold tracking-ultra hover:text-jma-mustard transition-colors flex items-center gap-1">
+                        PRODUCTOS <span class="text-black-400 font-normal">+</span>
+                    </a>
+                    <a href="#nosotros" class="text-xs font-bold tracking-ultra hover:text-jma-mustard transition-colors flex items-center gap-1">
+                        NOSOTROS <span class="text-black-400 font-normal">+</span>
+                    </a>
+                    <a href="#contacto" class="text-xs font-bold tracking-ultra hover:text-jma-mustard transition-colors flex items-center gap-1">
+                        CONTACTO <span class="text-black-400 font-normal">+</span>
+                    </a>
+                </div>
+
+                <!-- Botón CTA de Escritorio (Enlace a WhatsApp con icono) -->
+                <div class="hidden md:flex items-center">
+                    <a href="https://wa.me/51935303491?text=Hola,%20deseo%20cotizar%20materiales" target="_blank" class="bg-jma-dark text-white text-xs font-bold tracking-mega px-6 py-3 hover:bg-jma-mustard transition-colors uppercase flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Cotizar
+                    </a>
+                </div>
+
+                <!-- Botón Móvil (Hamburguesa) -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-jma-dark hover:text-jma-mustard focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-4 flex flex-col">
+                <a href="#inicio" class="mobile-link text-sm font-bold tracking-ultra text-jma-dark hover:text-jma-mustard uppercase block py-2 border-b border-black-50">Inicio</a>
+                <a href="#productos" class="mobile-link text-sm font-bold tracking-ultra text-jma-dark hover:text-jma-mustard uppercase block py-2 border-b border-black-50">Productos</a>
+                <a href="#nosotros" class="mobile-link text-sm font-bold tracking-ultra text-jma-dark hover:text-jma-mustard uppercase block py-2 border-b border-black-50">Nosotros</a>
+                <a href="#contacto" class="mobile-link text-sm font-bold tracking-ultra text-jma-dark hover:text-jma-mustard uppercase block py-2 border-b border-black-50">Contacto</a>
+                <a href="https://wa.me/51935303491?text=Hola,%20deseo%20cotizar%20materiales" target="_blank" class="bg-jma-mustard text-white text-center text-xs font-bold tracking-mega px-6 py-4 mt-4 uppercase flex justify-center items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Cotizar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- INICIO: Sección Hero Dividida (Bienvenida y Local) -->
+    <header id="inicio" class="relative w-full bg-jma-light pt-12 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+                
+                <!-- Columna Izquierda: Texto de Bienvenida -->
+                <div class="text-left">
+                    <span class="inline-flex items-center gap-2 py-1 px-3 border border-jma-mustard text-jma-mustard text-xs font-bold tracking-mega uppercase mb-6">
+                         Bienvenidos
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-jma-dark leading-tight mb-6 tracking-tight">
+                        Tu aliado seguro <br> <span class="font-serif italic font-normal text-jma-mustard">en cada construcción.</span>
+                    </h1>
+                    <p class="text-black-600 text-lg font-light mb-10 max-w-lg leading-relaxed">
+                        Somos tu ferretería de confianza. Contamos con un amplio stock de materiales de primera calidad, listos para ser despachados desde nuestro local directamente hasta tu obra.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/51935303491?text=Hola,%20deseo%20cotizar%20materiales" target="_blank" class="inline-flex bg-jma-dark text-white text-sm font-bold tracking-mega px-8 py-4 hover:bg-jma-mustard transition-colors duration-300 uppercase justify-center items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Cotizar
+                        </a>
+                        <a href="#productos" class="inline-flex border-2 border-jma-dark text-jma-dark text-sm font-bold tracking-mega px-8 py-4 hover:bg-jma-dark hover:text-white transition-colors duration-300 uppercase justify-center items-center">
+                            Ver Productos
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: Imagen del Local -->
+                <div class="relative mt-10 lg:mt-0">
+                    <div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-2/3 h-full bg-jma-mustard rounded-sm z-0"></div>
+                    <div class="relative z-10 bg-black-200 aspect-[4/3] md:aspect-[4/3] shadow-2xl overflow-hidden rounded-sm border-4 border-white">
+                        <img src="img/imagenf6.jpeg" alt="Local JMA Materiales" class="w-full h-full object-cover">
+                        
+                        <!-- ENLACE AL GOOGLE MAPS -->
+                        <a href="https://www.google.com/maps/place/JMA+Materiales+para+el+hogar/@-3.7782883,-73.2776434,19z/data=!3m1!4b1!4m6!3m5!1s0x91ea0f01cd35e257:0x108e4e3124cf5ff1!8m2!3d-3.7782896!4d-73.2769997!16s%2Fg%2F11zyj9z9zw?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-3 text-xs font-bold tracking-widest uppercase text-jma-dark shadow-lg hover:bg-jma-mustard hover:text-white transition-colors duration-300 flex items-center gap-2 group cursor-pointer">
+                            <i class="fa-solid fa-map-location-dot text-lg text-jma-mustard group-hover:text-white"></i>
+                            <span>Nuestro Local</span>
+                            <i class="fa-solid fa-arrow-right ml-1 opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner de Marcas (Carrusel Infinito) -->
+    <section class="bg-white py-12 md:py-16 border-b border-black-100 overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div class="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
+        
+        <div class="animate-marquee flex gap-16 md:gap-32 items-center opacity-70 blackscale hover:blackscale-0 transition-all duration-500 w-[200%]">
+            <!-- Set 1 -->
+            <div class="font-serif font-bold text-3xl tracking-tight shrink-0">SEGURIDAD</div>
+            <div class="font-sans font-black text-2xl tracking-tighter shrink-0">PUNTUALIDAD</div>
+            <div class="font-sans font-medium text-xl tracking-widest uppercase shrink-0">RAPIDEZ</div>
+            <div class="font-serif italic font-bold text-2xl shrink-0">CALIDAD</div>
+            
+            <!-- Set 2 -->
+            <div class="font-serif font-bold text-3xl tracking-tight shrink-0">SEGURIDAD</div>
+            <div class="font-sans font-black text-2xl tracking-tighter shrink-0">PUNTUALIDAD</div>
+            <div class="font-sans font-medium text-xl tracking-widest uppercase shrink-0">RAPIDEZ</div>
+            <div class="font-serif italic font-bold text-2xl shrink-0">CALIDAD</div>
+
+            <!-- Set 3 -->
+            <div class="font-serif font-bold text-3xl tracking-tight shrink-0">SEGURIDAD</div>
+            <div class="font-sans font-black text-2xl tracking-tighter shrink-0">PUNTUALIDAD</div>
+            <div class="font-sans font-medium text-xl tracking-widest uppercase shrink-0">RAPIDEZ</div>
+            <div class="font-serif italic font-bold text-2xl shrink-0">CALIDAD</div>
+
+            
+        </div>
+    </section>
+
+    <!-- PRODUCTOS: Catálogo Principal -->
+    <section id="productos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-mega uppercase text-jma-dark mb-4">Nuestros Materiales</h2>
+                <div class="h-1 w-20 bg-jma-mustard mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Tarjeta: Arena Blanca -->
+                <div class="group border border-black-200 hover:border-jma-mustard transition-colors duration-300">
+                    <div class="h-56 bg-black-100 overflow-hidden relative">
+                        <img src="img/imagenf8.jpeg" alt="Arena Blanca" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold tracking-ultra uppercase mb-2">Arena Blanca</h3>
+                        <p class="text-sm text-black-500 mb-6 font-light">Arena de alta calidad para cualquier obra</p>
+                        
+                        <div class="border-t border-black-100 pt-4 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-black-500">Por lata</span>
+                                <span class="font-bold text-jma-dark">S/ 1.30</span>
+                            </div>
+                            <div class="flex justify-between items-center text-jma-mustard">
+                                <span class="text-xs font-bold uppercase tracking-wider">Por 100 Latas</span>
+                                <span class="font-bold text-lg">S/ 120.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Cemento -->
+                <div class="group border border-black-200 hover:border-jma-mustard transition-colors duration-300">
+                    <div class="h-56 bg-black-100 overflow-hidden relative">
+                        <img src="img\cemento apu.png" alt="Cemento" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold tracking-ultra uppercase mb-2">Cemento</h3>
+                        <p class="text-sm text-black-500 mb-6 font-light">Cemento de alta calidad para construcción y demás obras</p>
+                        
+                        <div class="border-t border-black-100 pt-4 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-black-500">Por Bolsa</span>
+                                <span class="font-bold text-jma-dark">S/ 55.00</span>
+                            </div>
+                            <div class="flex justify-between items-center text-jma-mustard">
+                                <span class="text-xs font-bold uppercase tracking-wider">Por 50 Bolsas</span>
+                                <span class="font-bold text-lg">S/ 2,750.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Ladrillo -->
+                <div class="group border border-black-200 hover:border-jma-mustard transition-colors duration-300">
+                    <div class="h-56 bg-black-100 overflow-hidden relative">
+                        <img src="img\ladrillo.webp" alt="Ladrillos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold tracking-ultra uppercase mb-2">Ladrillo</h3>
+                        <p class="text-sm text-black-500 mb-6 font-light">Ladrillo de arcilla cocida de 6 huecos, perfecto para levantar los muros de tu hogar</p>
+                        
+                        <div class="border-t border-black-100 pt-4 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-black-500">Por Unidad</span>
+                                <span class="font-bold text-jma-dark">S/ 1.30</span>
+                            </div>
+                            <div class="flex justify-between items-center text-jma-mustard">
+                                <span class="text-xs font-bold uppercase tracking-wider">Por Millar</span>
+                                <span class="font-bold text-lg">S/ 1,300.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Próximamente -->
+            <div class="mt-20 text-center border-t border-black-200 pt-12">
+                <p class="text-xs font-bold tracking-mega uppercase text-black-400 mb-6">Próximamente en catálogo web</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="px-6 py-2 border border-black-200 text-black-500 text-xs tracking-wider uppercase">Fierros y Aceros</span>
+                    <span class="px-6 py-2 border border-black-200 text-black-500 text-xs tracking-wider uppercase">Herramientas</span>
+                    <span class="px-6 py-2 border border-black-200 text-black-500 text-xs tracking-wider uppercase">Tubos y Conexiones</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS: Sección Mostaza -->
+    <section id="nosotros" class="bg-jma-mustard py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+                <div>
+                    <h2 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+                        Materiales directo a tu obra
+                    </h2>
+                </div>
+                <div class="flex flex-col items-start">
+                    <p class="text-white text-lg md:text-xl font-light leading-relaxed mb-10 opacity-95">
+                        Somos una empresa con más de 7 años de experiencia dedicada al rubro ferretero y a los materiales de construcción en Loreto. Llevamos tus pedidos de manera puntual y responsable, dejándolos puesto en obra en todo Iquitos.
+                    </p>
+                    <a href="https://wa.me/51935303491?text=Hola,%20deseo%20cotizar%20materiales" target="_blank" class="inline-flex border-2 border-white text-white text-xs md:text-sm font-bold tracking-mega px-8 py-4 hover:bg-white hover:text-jma-mustard transition-colors uppercase items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Contáctanos por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO: Footer -->
+    <footer id="contacto" class="bg-jma-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold tracking-mega uppercase mb-8">JMA Materiales Para El Hogar</h2>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mb-12">
+                <div class="flex flex-col items-center">
+                    <span class="text-jma-mustard text-xs font-bold tracking-ultra uppercase mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-lg"></i> Visítanos
+                    </span>
+                    <p class="font-light text-sm">Av. Participación cdra 24 con Balmes Flores<br>Iquitos, Perú</p>
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    <span class="text-jma-mustard text-xs font-bold tracking-ultra uppercase mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-lg"></i> Escríbenos
+                    </span>
+                    <a href="https://wa.me/51935303491?text=Hola,%20deseo%20cotizar%20materiales" target="_blank" class="font-light text-sm hover:text-jma-mustard transition-colors">+51 935 303 491</a>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <span class="text-jma-mustard text-xs font-bold tracking-ultra uppercase mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-share-nodes text-lg"></i> Redes Sociales
+                    </span>
+                    <div class="flex gap-4 mt-2">
+                        <a href="#" class="text-white hover:text-jma-mustard transition-colors text-2xl"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-white hover:text-jma-mustard transition-colors text-2xl"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-jma-mustard transition-colors text-2xl"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-black-800 pt-8 mt-8">
+                <p class="text-xs text-black-500 font-light tracking-widest uppercase">
+                    &copy; 2026 JMA Materiales. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para el menú móvil -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Abrir/Cerrar menú
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
